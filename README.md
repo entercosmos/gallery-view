@@ -1,16 +1,11 @@
-# gallery-view
+# ![GalleryView](https://user-images.githubusercontent.com/44801418/48128406-f9f14a80-e2b8-11e8-9b19-f860d268f37a.png) GalleryView
 
-[![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
 
-Describe gallery-view here.
+Used for displaying records as individual cards in a gallery.	
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
+![GalleryView](https://user-images.githubusercontent.com/44947294/48402064-40cdbd00-e75d-11e8-9633-e52fd0217636.gif)
 
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
+[npm-badge]: https://img.shields.io/npm/v/@cmds/gallery-view.svg
+[npm]: https://www.npmjs.org/package/@cmds/gallery-view
 
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
