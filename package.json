@@ -1,6 +1,6 @@
 {
   "name": "@cmds/gallery-view",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Used for displaying records as individual cards in a gallery.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -21,7 +21,7 @@
     "test:watch": "nwb test-react --server"
   },
   "dependencies": {
-    "@cmds/record-gallery-card": "^0.5.0",
+    "@cmds/record-gallery-card": "^0.6.0",
     "css-element-queries": "^1.1.1",
     "emotion": "^9.2.12",
     "lodash": "^4.17.11",
