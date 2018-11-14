@@ -14,9 +14,15 @@ const generateAttachment = () => {
         mimeType: 'image/jpeg',
         filename: `Image`,
         thumbnails: {
-            small: `https://source.unsplash.com/featured/400x360?${cat}`,
-            medium: `https://source.unsplash.com/featured/400x360?${cat}`,
-            large: `https://source.unsplash.com/featured/400x360?${cat}`,
+            small: {
+                url: `https://source.unsplash.com/featured/400x360?${cat}`
+            },
+            medium: {
+                url: `https://source.unsplash.com/featured/400x360?${cat}`
+            },
+            large: {
+                url: `https://source.unsplash.com/featured/400x360?${cat}`
+            },
         },
         url: `https://source.unsplash.com/featured/400x360?${cat}`
     }
