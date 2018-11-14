@@ -9,12 +9,28 @@ export default class GalleryView extends React.Component {
         recordCount: PropTypes.number.isRequired,
         primaryFieldId: PropTypes.string.isRequired,
         coverFieldId: PropTypes.string,
-        coverFitTypeId: PropTypes.string,
+        coverFitTypeId: PropTypes.oneOf(['cover', 'fit']),
         fields: PropTypes.arrayOf(
             PropTypes.shape({
                 id: PropTypes.string.isRequired,
                 name: PropTypes.string.isRequired,
-                typeId: PropTypes.oneOf(['singleLineText', 'linkToAnotherRecord', 'checkbox', 'attachment'])
+                typeId: PropTypes.oneOf([
+                    'attachment',
+                    'autonumber',
+                    'checkbox',
+                    'multipleCollaborator',
+                    'collaborator',
+                    'createdCollaborator',
+                    'createdTime',
+                    'date',
+                    'linkToAnotherRecord',
+                    'longText',
+                    'multipleSelect',
+                    'number',
+                    'singleLineText',
+                    'singleSelect',
+                    'updatedTime'
+                ])
             })
         )
     }
@@ -41,12 +57,20 @@ export default class GalleryView extends React.Component {
 
     cardRenderer = ({index}) => {
 
-        const {primaryFieldId, coverFieldId, fields, fieldVisibility, valueGetter} = this.props
+        const {
+            primaryFieldId,
+            coverFieldId,
+            coverFitTypeId,
+            fields,
+            fieldVisibility,
+            valueGetter
+        } = this.props
 
         return (
             <RecordGalleryCard
                 primaryFieldId={primaryFieldId}
                 coverFieldId={coverFieldId}
+                coverFitTypeId={coverFitTypeId}
                 fields={fields}
                 fieldVisibility={fieldVisibility}
                 valueGetter={({fieldId}) => {

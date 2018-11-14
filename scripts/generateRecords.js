@@ -11,7 +11,7 @@ const generateAttachment = () => {
     const cat = sample(['wanderlust', 'water', 'canada', 'mountain', 'beach'])
     return {
         id: `att${i}`,
-        mimeType: 'image/jpeg',
+        type: 'image/jpeg',
         filename: `Image`,
         thumbnails: {
             small: {
@@ -30,7 +30,7 @@ const generateAttachment = () => {
 
 const generateAttachments = () => {
 
-    return times(random(2, 5)).map(i => {
+    return times(random(0, 5)).map(i => {
         return generateAttachment(i)
     })
 }
@@ -55,6 +55,7 @@ const structure = {
     },
     view: {
         coverFieldId: 'fld5',
+        coverFitTypeId: 'cover',
         fieldVisibility: [
             'fld1',
             'fld2',

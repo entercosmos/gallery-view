@@ -60,7 +60,7 @@ class Demo extends Component {
                         recordCount={data.content.length}
                         primaryFieldId={data.structure.table.primaryFieldId}
                         coverFieldId={data.structure.view.coverFieldId}
-                        coverFitTypeId={'cover'}
+                        coverFitTypeId={data.structure.view.coverFitTypeId}
                         fieldVisibility={data.structure.view.fieldVisibility}
                         fields={data.structure.fields}
                         recordGetter={({index}) => {
