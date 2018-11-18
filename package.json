@@ -1,6 +1,6 @@
 {
   "name": "@cmds/gallery-view",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Used for displaying records as individual cards in a gallery.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -21,7 +21,6 @@
     "test:watch": "nwb test-react --server"
   },
   "dependencies": {
-    "@cmds/record-gallery-card": "^0.6.0",
     "css-element-queries": "^1.1.1",
     "emotion": "^9.2.12",
     "lodash": "^4.17.11",
@@ -32,6 +31,15 @@
     "react": "16.x"
   },
   "devDependencies": {
+    "@cmds/attachment-field": "^0.8.0",
+    "@cmds/checkbox-field": "^0.3.0",
+    "@cmds/link-to-another-record-field": "^0.3.0",
+    "@cmds/long-text-field": "^0.3.1",
+    "@cmds/multiple-select-field": "^0.6.0",
+    "@cmds/number-field": "^0.7.0",
+    "@cmds/record-gallery-card": "^0.8.0",
+    "@cmds/single-line-text-field": "^0.6.0",
+    "@cmds/single-select-field": "^0.5.0",
     "faker": "^4.1.0",
     "nwb": "0.23.x",
     "react": "^16.6.1",
