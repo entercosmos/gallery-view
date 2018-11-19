@@ -22,7 +22,7 @@ export default class GalleryView extends React.Component {
 
     render() {
 
-        const ROW_SPACING = 32
+        const ROW_SPACING = 16
 
         const {
             cardRenderer,
@@ -32,82 +32,74 @@ export default class GalleryView extends React.Component {
         } = this.props
 
         return (
-            <div
-                className={css`
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    padding-top: 12px;
-                    padding-bottom: 12px;
-                `}
-            >
-                <AutoSizer>
-                    {({width}) => {
+            <AutoSizer>
+                {({width}) => {
 
-                        const perRowCount = Math.max(1, Math.floor(width / cardWidth))
-                        const rowCount = Math.ceil(cardCount / perRowCount)
+                    const perRowCount = Math.max(1, Math.floor(width / cardWidth))
+                    const rowCount = Math.ceil(cardCount / perRowCount)
 
-                        return (
-                            <WindowScroller>
-                                {({height, isScrolling, onChildScroll, scrollTop}) => (
-                                    <List
-                                        ref={(instance) => {
-                                            this.List = instance
-                                        }}
-                                        isScrolling={isScrolling}
-                                        onScroll={onChildScroll}
-                                        scrollTop={scrollTop}
-                                        rowHeight={cardHeight + ROW_SPACING}
-                                        rowRenderer={(props) => {
+                    return (
+                        <WindowScroller>
+                            {({height, isScrolling, onChildScroll, scrollTop}) => (
+                                <List
+                                    ref={(instance) => {
+                                        this.List = instance
+                                    }}
+                                    style={{
+                                        paddingTop: 8,
+                                        paddingBottom: 8
+                                    }}
+                                    isScrolling={isScrolling}
+                                    onScroll={onChildScroll}
+                                    scrollTop={scrollTop}
+                                    rowHeight={cardHeight + ROW_SPACING}
+                                    rowRenderer={(props) => {
 
-                                            const {index} = props
-                                            const startIndex = index * perRowCount
-                                            const stopIndex = startIndex + perRowCount
-                                            const flexCardWidth = 100 / perRowCount
+                                        const {index} = props
+                                        const startIndex = index * perRowCount
+                                        const stopIndex = startIndex + perRowCount
+                                        const flexCardWidth = 100 / perRowCount
 
-                                            return (
-                                                <RowContainer
-                                                    {...props}
-                                                >
-                                                    {range(startIndex, stopIndex).map(i => {
+                                        return (
+                                            <RowContainer
+                                                {...props}
+                                            >
+                                                {range(startIndex, stopIndex).map(i => {
 
-                                                        let card = null
+                                                    let card = null
 
-                                                        if (i < cardCount) {
+                                                    if (i < cardCount) {
 
-                                                            card = cardRenderer({
-                                                                index: i,
-                                                                height: cardHeight,
-                                                                width: flexCardWidth
-                                                            })
-                                                        }
+                                                        card = cardRenderer({
+                                                            index: i,
+                                                            height: cardHeight,
+                                                            width: flexCardWidth
+                                                        })
+                                                    }
 
-                                                        return (
-                                                            <CardContainer
-                                                                key={i}
-                                                                width={flexCardWidth}
-                                                                height={cardHeight}
-                                                            >
-                                                                {card}
-                                                            </CardContainer>
-                                                        )
-                                                    })}
-                                                </RowContainer>
-                                            )
-                                        }}
-                                        rowCount={rowCount}
-                                        width={width}
-                                        autoHeight={true}
-                                        height={height}
-                                    />
-                                )}
-                            </WindowScroller>
-                        )
-                    }}
-                </AutoSizer>
-            </div>
+                                                    return (
+                                                        <CardContainer
+                                                            key={i}
+                                                            width={flexCardWidth}
+                                                            height={cardHeight}
+                                                        >
+                                                            {card}
+                                                        </CardContainer>
+                                                    )
+                                                })}
+                                            </RowContainer>
+                                        )
+                                    }}
+                                    rowCount={rowCount}
+                                    width={width}
+                                    autoHeight={true}
+                                    height={height}
+                                />
+                            )}
+                        </WindowScroller>
+                    )
+                }}
+            </AutoSizer>
         )
     }
 }
