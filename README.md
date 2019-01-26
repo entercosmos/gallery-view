@@ -1,5 +1,7 @@
 # ![GalleryView](https://user-images.githubusercontent.com/44801418/48128406-f9f14a80-e2b8-11e8-9b19-f860d268f37a.png) GalleryView
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/entercosmos/gallery-view.svg)](https://greenkeeper.io/)
+
 [![npm package][npm-badge]][npm]
 
 Used for displaying records as individual cards in a gallery.	
