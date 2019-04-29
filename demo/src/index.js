@@ -24,6 +24,7 @@ injectGlobal`
     }
     body {
         font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+        margin: 0;
     }
 `
 
@@ -129,6 +130,7 @@ const cardRenderer = ({index}) => {
             fieldHeightGetter={fieldHeightGetter}
             fields={data.structure.fields}
             fieldRenderer={fieldRenderer({record})}
+            onClick={({id}) => alert(`Clicked record with id ${id}`)}
         />
     )
 }

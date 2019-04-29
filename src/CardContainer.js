@@ -5,7 +5,7 @@ const CardContainer = ({children, width, height}) => (
     <div
         className={cx(
             css`
-                padding: 8px;
+                padding: 12px;
                 display: inline-block;
                 width: ${width}%;
             `

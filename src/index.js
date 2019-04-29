@@ -19,12 +19,12 @@ export default class GalleryView extends React.Component {
     }
 
     static defaultProps = {
-        cardWidth: 240
+        cardWidth: 250
     }
 
     render() {
 
-        const ROW_SPACING = 16
+        const ROW_SPACING = 24
 
         const {
             cardRenderer,
@@ -48,8 +48,8 @@ export default class GalleryView extends React.Component {
                                 this.List = instance
                             }}
                             style={{
-                                paddingTop: 8,
-                                paddingBottom: 8
+                                paddingTop: 12,
+                                paddingBottom: 12
                             }}
                             rowHeight={cardHeight + ROW_SPACING}
                             rowRenderer={(props) => {

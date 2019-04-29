@@ -8,8 +8,8 @@ const RowContainer = ({style, children}) => {
             className={css`
                 display: flex;
                 justify-content: center;
-                padding-left: 8px;
-                padding-right: 8px;
+                padding-left: 12px;
+                padding-right: 12px;
             `}
         >
             {children}
