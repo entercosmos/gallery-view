@@ -1,15 +1,15 @@
-import React, {Component} from 'react'
-import {render} from 'react-dom'
-import {css, injectGlobal} from 'emotion'
-import RecordGalleryCard from '@cmds/record-gallery-card'
-import CheckboxField from '@cmds/checkbox-field'
-import AttachmentField from '@cmds/attachment-field'
-import LongTextField from '@cmds/long-text-field'
-import SingleLineTextField from '@cmds/single-line-text-field'
-import SingleSelectField from '@cmds/single-select-field'
-import MultipleSelectField from '@cmds/multiple-select-field'
-import NumberField from '@cmds/number-field'
-import LinkToAnotherRecordField from '@cmds/link-to-another-record-field'
+import React, { Component } from 'react'
+import { render } from 'react-dom'
+import { css, injectGlobal } from 'emotion'
+import RecordGalleryCard from '@pndr/record-gallery-card'
+import CheckboxField from '@pndr/checkbox-field'
+import AttachmentField from '@pndr/attachment-field'
+import LongTextField from '@pndr/long-text-field'
+import SingleLineTextField from '@pndr/single-line-text-field'
+import SingleSelectField from '@pndr/single-select-field'
+import MultipleSelectField from '@pndr/multiple-select-field'
+import NumberField from '@pndr/number-field'
+import LinkToAnotherRecordField from '@pndr/link-to-another-record-field'
 import RecordGalleryView from '../../src'
 import fieldHeightGetter from './fieldHeightGetter'
 import data from './data.json'
@@ -28,48 +28,52 @@ injectGlobal`
     }
 `
 
-const selectName = ({record}) => {
+const selectName = ({ record }) => {
     return record.cells.fld1.text
 }
 
-const selectCoverAttachments = ({record}) => {
+const selectCoverAttachments = ({ record }) => {
     return record.cells.fld5.attachments
 }
 
-const fieldRenderer = ({record}) => ({id, field, props}) => {
+const fieldRenderer = ({ record }) => ({ id, field, props }) => {
 
     const renderers = {
-        singleLineText: ({props, cell}) => (
+        singleLineText: ({ props, cell }) => (
             <SingleLineTextField
                 {...props}
                 text={cell.text}
             />
         ),
-        longText: ({props, cell}) => (
+        longText: ({ props, cell }) => (
             <LongTextField
                 {...props}
                 longText={cell.longText}
             />
         ),
-        checkbox: ({props, cell}) => (
+        checkbox: ({ props, cell }) => (
             <CheckboxField
                 {...props}
                 checked={cell.checked}
             />
         ),
-        attachment: ({props, cell}) => (
+        attachment: ({ props, cell }) => (
             <AttachmentField
                 {...props}
                 attachments={cell.attachments}
             />
         ),
-        linkToAnotherRecord: ({props, cell}) => (
+        linkToAnotherRecord: ({ props, cell }) => (
             <LinkToAnotherRecordField
                 {...props}
-                records={cell.records}
+                recordCount={cell.records.length}
+                recordGetter={({ index }) => {
+                    return cell.records[index]
+                }}
+                recordRenderer={() => null}
             />
         ),
-        multipleSelect: ({props, field, cell}) => (
+        multipleSelect: ({ props, field, cell }) => (
             <MultipleSelectField
                 {...props}
                 optionIds={cell.optionIds}
@@ -78,7 +82,7 @@ const fieldRenderer = ({record}) => ({id, field, props}) => {
                 coloredOptions={field.options.coloredOptions}
             />
         ),
-        singleSelect: ({props, field, cell}) => (
+        singleSelect: ({ props, field, cell }) => (
             <SingleSelectField
                 {...props}
                 optionId={cell.optionId}
@@ -87,7 +91,7 @@ const fieldRenderer = ({record}) => ({id, field, props}) => {
                 coloredOptions={field.options.coloredOptions}
             />
         ),
-        number: ({props, field, cell}) => (
+        number: ({ props, field, cell }) => (
             <NumberField
                 {...props}
                 number={cell.number}
@@ -115,22 +119,22 @@ const fieldRenderer = ({record}) => ({id, field, props}) => {
 }
 
 
-const cardRenderer = ({index}) => {
+const cardRenderer = ({ index }) => {
 
     const record = data.content[index]
 
     return (
         <RecordGalleryCard
             id={record.id}
-            name={selectName({record})}
+            name={selectName({ record })}
             coverFitTypeId={data.structure.view.coverFitTypeId}
-            coverAttachments={selectCoverAttachments({record})}
+            coverAttachments={selectCoverAttachments({ record })}
             coverEnabled={true}
             visibleFieldOrder={data.structure.view.visibleFieldOrder}
             fieldHeightGetter={fieldHeightGetter}
             fields={data.structure.fields}
-            fieldRenderer={fieldRenderer({record})}
-            onClick={({id}) => alert(`Clicked record with id ${id}`)}
+            fieldRenderer={fieldRenderer({ record })}
+            onClick={({ id }) => alert(`Clicked record with id ${id}`)}
         />
     )
 }
@@ -165,4 +169,4 @@ class Demo extends Component {
     }
 }
 
-render(<Demo/>, document.querySelector('#demo'))
+render(<Demo />, document.querySelector('#demo'))
